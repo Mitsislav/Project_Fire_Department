@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="IOANNIS CHATZIANTONIOU">
+    <meta name="Author" content="csd5193">
+    <link rel="stylesheet" href="loginAdmin.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Login Admin</title>
+</head>
+<body>
+<div id="admin_login_section">
+
+    <form id="adminForm" class="text-white">
+        <h2 class="custom-header">Login Admin</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <span id="loginError" class="error"></span>
+        <br>
+        <button type="submit" id="login">Login</button>
+
+    </form>
+</div>
+
+<div id="admin_logged_section" style="display: none;">
+    <h2 class="custom-header">Admin Panel</h2>
+    <form id="profileAdmin">
+
+        <label for="usernameF">Username:</label>
+        <input type="text" id="usernameF" readonly/>
+
+        <label for="passwordF">Password:</label>
+        <input type="text" id="passwordF" minlength="8" maxlength="18"
+               pattern="(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,18}" required/>
+
+        <button type="submit" id="update">Change Password</button>
+    </form>
+
+    <h2 class="custom-header">Create New Incident</h2>
+    <form id="newIncidentForm">
+        <label for="newDescription">Description:</label>
+        <input type="text" id="newDescription" required><br>
+
+        <label for="newDanger">Danger:</label><br>
+        <select id="newDanger" class="new-incident-select" required>
+            <option value="unknown">Unknown</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select><br>
+
+        <label for="newFiremen">Firemen:</label>
+        <input type="number" id="newFiremen" required><br>
+
+        <label for="newVehicles">Vehicles:</label>
+        <input type="number" id="newVehicles" required><br>
+
+        <label for="newPhoneNumber">Phone Number:</label>
+        <input type="number" id="newPhoneNumber" value="6981865250" required><br>
+        <small class="field-note">Admin's phone number</small><br>
+
+        <label for="newIncidentType">Incident Type:</label><br>
+        <select id="newIncidentType" class="new-incident-select" required>
+            <option value="fire">Fire</option>
+            <option value="accident">Accident</option>
+        </select><br>
+
+        <!-- -->
+
+        <label for="newAddress">Address:</label>
+        <input type="text" id="newAddress" required>
+
+        <label for="newCountry">Country:</label>                             <!-- country -->
+        <select id="newCountry"  class="new-country-select" required>
+            <option value="" disabled selected>Select Country</option>
+            <option value="GR">Ελλάδα</option>
+        </select>
+
+        <label for="newPrefecture">Prefecture:</label>                 <!-- prefecture -->
+        <select id="newPrefecture"  class="new-prefecture-select" required onchange="updateMunicipality()">
+            <option value="" disabled selected>Select Prefecture</option>
+            <option value="Heraklion">Ηράκλειο</option>
+            <option value="Chania">Χανιά</option>
+            <option value="Rethymnon">Ρέθυμνο</option>
+            <option value="Lasithi">Λασίθι</option>
+        </select>
+        <br><br>
+
+        <label for="newMunicipality">Municipality</label>              <!-- municipality -->
+        <select id="newMunicipality" class="new-municipality-select" required>
+            <option value="" disabled selected>Select Municipality</option>
+        </select>
+        <br><br>
+
+        <button type="button" id="verifyLocation">Verify Address</button>
+        <span id="locationStatus" style="color: red; font-weight: bold;"></span>
+        <br><br>
+
+        <br><button type="submit" id="createIncident">Create Incident</button>
+    </form>
+
+    <section>
+        <h2 class="custom-header">Existing Incidents</h2>
+        <table id="incidents_table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Start Date & Time</th>
+                <th>End Date & Time</th>
+                <th>Danger</th>
+                <th>Firemen</th>
+                <th>Vehicles</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Final Result</th>
+                <th>Actions</th>
+                <th>Change Status</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </section><br>
+
+    <section>
+        <h2 class="custom-header">Requested Participants</h2>
+        <table id="requested_participants_table">
+            <thead>
+            <tr>
+                <th>Participant ID</th>
+                <th>Incident ID</th>
+                <th>Volunteer Username</th>
+                <th>Volunteer Type</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Rows will be populated dynamically -->
+            </tbody>
+        </table>
+    </section><br>
+
+    <!-- Accepted Participants Table -->
+    <section>
+        <h2 class="custom-header">Accepted Participants</h2>
+        <table id="accepted_participants_table">
+            <thead>
+            <tr>
+                <th>Participant ID</th>
+                <th>Incident ID</th>
+                <th>Volunteer Username</th>
+                <th>Volunteer Type</th>
+                <th>Comment</th>
+                <th>New Comment</th>
+                <th>Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Rows will be populated dynamically -->
+            </tbody>
+        </table>
+    </section>
+
+    <section class="statistics-section">
+        <h2 class="custom-header">Statistics</h2>
+        <div class="charts-container">
+            <div id="chart_incidents" class="chart-box"></div>
+            <div id="chart_users_volunteers" class="chart-box"></div>
+            <div id="chart_resources" class="chart-box"></div>
+        </div>
+    </section>
+
+</div>
+
+<div id="admin_chat_section" style="display: none">
+    <h3>Admin Chat</h3>
+    <div id="admin_chat_messages"></div>
+    <form id="admin_chat_form">
+        <textarea id="admin_chat_message" placeholder="Write your message..." required></textarea>
+        <input type="hidden" id="admin_chat_incident_id">
+        <label for="recipient_select">Recipient:</label>
+        <select id="recipient_select">
+            <option value="public">Public</option>
+            <option value="user">User</option>
+            <option value="volunteer">Volunteer</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="button" class="btn btn-secondary" onclick="closeAdminChat()">Close Chat</button>
+    </form>
+</div>
+
+
+<h2></h2>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="loginAdminAJAX.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</body>
+</html>

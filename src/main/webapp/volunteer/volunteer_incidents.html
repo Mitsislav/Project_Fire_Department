@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Incidents</title>
+    <meta name="Author" content="Christos Polimatidis csd5209">
+    <meta name="Author" content="Ioannis Chatziantoniou csd5193">
+    <link rel="stylesheet" href="volunteer_incidents.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+<div class="button-container">
+    <button type="submit" id="update" onclick="redirectToLogin()">Update Profile</button>
+    <button type="button" id="logout">Logout</button>
+</div>
+<div class="notification-container">
+    <button id="notificationBtn">
+            <i class="fas fa-bell"></i>
+        🔔 <span id="notificationCount">0</span>
+    </button>
+</div>
+<!-- Notification Panel (Hidden Initially) -->
+<div id="notificationPanel" class="hidden">
+    <h3>Notifications</h3>
+    <ul id="notificationList">
+        <li>No new notifications</li> <!-- Default message -->
+    </ul>
+</div>
+<h1>Running Incidents</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Incident Id</th>
+        <th>Incident Type</th>
+        <th>Description</th>
+        <th>User Phone</th>
+        <th>Address</th>
+        <th>Municipality</th>
+        <th>Prefecture</th>
+        <th>Start DateTime</th>
+        <th>Danger</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<h1>History</h1>
+<table id="historyTable" border="1">
+    <thead>
+    <tr>
+        <th>Incident Id</th>
+        <th>Incident Type</th>
+        <th>Description</th>
+        <th>User Phone</th>
+        <th>Address</th>
+        <th>Municipality</th>
+        <th>Prefecture</th>
+        <th>Start DateTime</th>
+        <th>Danger</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- History rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<div id="volunteer_chat_section" style="display: none">
+    <h3>Volunteer Chat</h3>
+    <div id="volunteer_chat_messages"></div>
+    <form id="volunteer_chat_form">
+        <textarea id="volunteer_chat_message" placeholder="Write your message..." required></textarea>
+        <input type="hidden" id="volunteer_chat_incident_id">
+        <label for="recipient_select">Recipient:</label>
+        <select id="recipient_select">
+            <option value="public">Public</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="button" class="btn btn-secondary" onclick="closeVolunteerChat()">Close Chat</button>
+    </form>
+</div>
+
+
+<script src="volunteer_incidents.js"></script>
+</body>
+</html>

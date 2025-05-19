@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="IOANNIS CHATZIANTONIOU">
+    <meta name="Author" content="csd5193">
+    <link rel="stylesheet" href="index.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>My Form</title>
+</head>
+<body>
+    <form id="myForm" class="text-white">
+
+        <label for="username">*Username:</label>                        <!-- username at english -->
+        <input type="text" id="username" minlength="8"
+            pattern="[A-Za-z][A-Za-z0-9]{7,}" title="Username must be
+            at least 8 characters and start with a letter." required>
+        <span id="usernameError" class="error"></span>
+        <br><br>
+
+        <label for="email">*Email</label>                               <!-- email with @ -->
+        <input type="email" id="email" required>
+        <span id="emailError" class="error"></span>
+        <br><br>
+
+        <label for="password">*Κωδικός χρήστη</label>                   <!-- password -->
+
+        <div class="password-container">
+        <input type="password" id="password" minlength="8" maxlength="18"
+            pattern="(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,18}" required>
+        <button type="button" id="eye">🙉</button>
+        </div>
+        <span id="passwordStrong" class="passwordStrong"></span>
+        <br><br>
+
+        <label for="confirmPassword">*Επιβεβαίωση κωδικού</label>       <!-- password -->
+
+        <div class="password-container">
+        <input type="password" id="confirmPassword" minlength="8" maxlength="18" 
+            pattern="(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,18}" required>
+        <button type="button" id="eye2">🙉</button>
+        </div>
+        <span id="passwordNotMatch" class="passwordNotMatch"></span>
+        <br><br>
+
+        <label for="firstname">*Όνομα</label>                           <!-- firstname greek or english -->
+        <input type="text" id="firstname" minlength="3" maxlength="30"
+            pattern="[A-Za-zΑ-Ωα-ω]{3,30}" required>
+        <br><br>
+
+        <label for="lastname">*Επώνυμο</label>                          <!-- lastname greek or english -->    
+        <input type="text" id="lastname" minlength="3" maxlength="30"
+            pattern="[A-Za-zΑ-Ωα-ω]{3,30}" required>
+        <br><br>
+
+        <label for="birthdate">*Ημερομηνία γέννησης </label>            <!-- born date -->
+        <input type="date" id="birthdate" min="1920-01-01" max="2011-12-31" value="1980-01-01">
+        <br><br>
+
+        <label id="gender">*Φύλο:</label><br>                           <!-- gender -->
+        <input type="radio" id="male" name="gender" value="male" required>Άντρας
+        <input type="radio" id="female" name="gender" value="female">Γυναίκα
+        <input type="radio" id="other" name="gender" value="other">Άλλο
+        <br><br>
+
+        <label for="afm">*ΑΦΜ:</label>                                  <!-- AFM 10 numbers -->
+        <input type="text" id="afm" name="afm" pattern="\d{10}" required>
+        <br><br>
+
+        <label for="type">*Τύπος Χρήστη:</label>                        <!-- types of user -->
+        <select id="type" required>
+            <option value="" disabled selected>Επιλέξτε Τύπο Χρήστη</option>
+            <option value="user">Απλός Χρήστης</option>
+            <option value="volunteer">Εθελοντής Πυροσβέστης</option>
+        </select>
+        <br><br>
+
+        <div id="volunteerF" style="display: none;">               <!-- volunteer -->
+            <label for="volunteer_type">Κατηγορία:</label>
+            <select id="volunteer_type">
+                <option value="simple">Μάχιμοι Εθελοντές Πυροσβέστες</option>
+                <option value="driver">Οδηγοί-Χειριστές Πυροσβεστικών οχημάτων</option>
+            </select>
+            <br><br>
+
+            <label for="height">Ύψος:</label>
+            <input type="number" id="height" min="1.45" max="2.20" step="0.01">
+            <br><br>
+
+            <label for="weight">Βάρος:</label>
+            <input type="number" id="weight" min="40" max="160">
+            <br><br>
+        </div>
+
+        <label for="country">*Χώρα:</label>                             <!-- country -->
+        <select id="country" required>
+            <option value="" disabled selected>Επιλέξτε χώρα</option>
+            <option value="GR">Ελλάδα</option>
+            <option value="AF">Afghanistan</option>
+            <option value="AX">Åland Islands</option>
+            <option value="AL">Albania</option>
+            <option value="DZ">Algeria</option>
+            <option value="AS">American Samoa</option>
+            <option value="AD">Andorra</option>
+            <option value="AO">Angola</option>
+            <option value="AI">Anguilla</option>
+            <option value="AQ">Antarctica</option>
+            <option value="AG">Antigua and Barbuda</option>
+            <option value="AR">Argentina</option>
+            <option value="AM">Armenia</option>
+            <option value="AW">Aruba</option>
+            <option value="AU">Australia</option>
+            <option value="AT">Austria</option>
+            <option value="AZ">Azerbaijan</option>
+            <option value="BS">Bahamas</option>
+            <option value="BH">Bahrain</option>
+            <option value="BD">Bangladesh</option>
+            <option value="BB">Barbados</option>
+            <option value="BY">Belarus</option>
+            <option value="BE">Belgium</option>
+            <option value="BZ">Belize</option>
+            <option value="BJ">Benin</option>
+            <option value="BM">Bermuda</option>
+            <option value="BT">Bhutan</option>
+            <option value="BO">Bolivia (Plurinational State of)</option>
+            <option value="BA">Bosnia and Herzegovina</option>
+            <option value="BW">Botswana</option>
+            <option value="BV">Bouvet Island</option>
+            <option value="BR">Brazil</option>
+            <option value="IO">British Indian Ocean Territory</option>
+            <option value="BN">Brunei Darussalam</option>
+            <option value="BG">Bulgaria</option>
+            <option value="BF">Burkina Faso</option>
+            <option value="BI">Burundi</option>
+            <option value="CV">Cabo Verde</option>
+            <option value="KH">Cambodia</option>
+            <option value="CM">Cameroon</option>
+            <option value="CA">Canada</option>
+            <option value="BQ">Caribbean Netherlands</option>
+            <option value="KY">Cayman Islands</option>
+            <option value="CF">Central African Republic</option>
+            <option value="TD">Chad</option>
+            <option value="CL">Chile</option>
+            <option value="CN">China</option>
+            <option value="CX">Christmas Island</option>
+            <option value="CC">Cocos (Keeling) Islands</option>
+            <option value="CO">Colombia</option>
+            <option value="KM">Comoros</option>
+            <option value="CG">Congo</option>
+            <option value="CD">Congo, Democratic Republic of the</option>
+            <option value="CK">Cook Islands</option>
+            <option value="CR">Costa Rica</option>
+            <option value="HR">Croatia</option>
+            <option value="CU">Cuba</option>
+            <option value="CW">Curaçao</option>
+            <option value="CY">Cyprus</option>
+            <option value="CZ">Czech Republic</option>
+            <option value="CI">Côte d'Ivoire</option>
+            <option value="DK">Denmark</option>
+            <option value="DJ">Djibouti</option>
+            <option value="DM">Dominica</option>
+            <option value="DO">Dominican Republic</option>
+            <option value="EC">Ecuador</option>
+            <option value="EG">Egypt</option>
+            <option value="SV">El Salvador</option>
+            <option value="GQ">Equatorial Guinea</option>
+            <option value="ER">Eritrea</option>
+            <option value="EE">Estonia</option> 
+        </select>
+        <br><br>
+
+        <label for="prefecture">*Νομός:</label>                 <!-- prefecture -->
+        <select id="prefecture" required onchange="updateMunicipality()">
+            <option value="" disabled selected>Επιλέξτε Νομό</option>
+            <option value="Heraklion">Ηράκλειο</option>
+            <option value="Chania">Χανιά</option>
+            <option value="Rethymnon">Ρέθυμνο</option>
+            <option value="Lasithi">Λασίθι</option>
+        </select>
+        <br><br>
+
+        <label for="municipality">*Δήμος Διαμονής:</label>              <!-- municipality -->
+        <select id="municipality" required>
+            <option value="" disabled selected>Επιλέξτε Δήμο</option>
+        </select>
+        <br><br>
+
+        <label for="address">*Διεύθυνση Οικίας:</label>                 <!-- address -->
+        <input type="text" id="address" pattern=".{10,150}" required>
+        <span id="addressValidMessage"></span>
+        <br><br>
+
+        <button type="button" id="verifyLocation">Επαλήθευση Διεύθυνσης</button>
+        <span id="locationStatus" style="color: red; font-weight: bold;"></span>
+        <br><br>
+
+        <div id="mapContainer" style="width: 100%; height: 400px; display: none;"></div><br>
+        <button type="button" id="MapBtn" style="display: none;">Δείξε μου στον Χάρτη</button>
+        
+
+        <label for="job">*Επάγγελμα:</label>                            <!-- job -->
+        <input type="text" id="job" pattern=".{3,30}" required>
+        <br><br>
+
+        <label for="telephone">*Κινητό Τηλέφωνο:</label>                <!-- phone number 10-14 digits -->
+        <input type="tel" id="telephone" pattern="\d{10,14}" required>
+        <span id="telephoneError" class="error"></span>
+        <br><br>
+
+        <label for="terms">*Συμφωνία με όρους χρήσης:</label>           <!-- terms of agreement-->
+        <input type="checkbox" id="terms" name="terms" required>        <!-- checkbox -->
+        <p id="termsMsg">Απαγορεύεται η άσκοπη χρήση της εφαρμογής. Συμφωνώ πως η άσκοπη χρήση της θα διώκεται ποινικά.</p>
+        
+        <button type="submit" id="submit">Εγγραφή</button>                          <!-- submit button -->
+        <br><br>
+        
+    </form>
+
+    <div id="Json" style="white-space: pre-wrap; margin-top: 20px;"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <script src="map.js"></script>
+    <script src="manicipality.js"></script>
+    <script src="ajax.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+/* General body styling */
+body {
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('test.webp'); /* Adjust image as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+/* Form container with transparency */
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Transparent background */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form heading */
+h1 {
+    text-align: center;
+    color: #d32f2f;
+    font-size: 26px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* Inputs and selects */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #d32f2f;
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+}
+
+/* Submit button */
+button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #b71c1c;
+    transform: scale(1.05);
+}
+
+/* Response message */
+#responseMessage {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #d32f2f;
+}
+
+footer {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    position: relative;
+}
+
+footer h5 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 15px auto;
+    opacity: 0.9;
+}
+
+/* Footer Links */
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+footer ul li {
+    display: inline-block;
+}
+
+footer ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease, text-decoration 0.3s;
+}
+
+footer ul li a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+/* Animated Social & Info Icons */
+.footer-icons {
+    margin-top: 20px;
+}
+
+.footer-icons a {
+    display: inline-block;
+    margin: 0 8px;
+    color: white;
+    font-size: 22px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer-icons a:hover {
+    transform: scale(1.2);
+    color: #f1c40f;
+}
+
+/* Footer Bottom - Copyright */
+.footer-bottom {
+    margin-top: 25px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+    form {
+        padding: 15px;
+    }
+
+    footer ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Grid Layout for Form, Guest Buttons, and Check Map */
+#gridContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Form takes more space, buttons take less */
+    gap: 30px; /* More spacing between columns */
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    align-items: center; /* Aligns elements towards the center */
+}
+
+/* Left Column - Incident Form */
+#incidentFormContainer {
+    width: 100%;
+}
+
+/* Right Column - Guest Buttons & Check Map */
+#rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center; /* Pushes content more to the middle */
+    align-items: center;
+    margin-top: 50px; /* Moves it slightly lower */
+}
+
+/* Guest Login Buttons & Check Map Container */
+#guestButtons, #checkMapButton {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Apply Red Theme to All Buttons */
+#guestButtons button,
+#checkMapButton button,
+#incidentForm button {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    background-color: #c62828; /* Strong Red */
+    color: white;
+}
+
+/* Hover Effect */
+#guestButtons button:hover,
+#checkMapButton button:hover,
+#incidentForm button:hover {
+    background-color: #b71c1c;
+    transform: scale(1.03);
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    #gridContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #rightColumn {
+        width: 100%;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    #guestButtons, #checkMapButton {
+        max-width: 100%;
+    }
+}

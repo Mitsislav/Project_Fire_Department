@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>servlets.NewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckDuplicateServlet</servlet-name>
+        <servlet-class>servlets.CheckDuplicateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckDuplicateServlet</servlet-name>
+        <url-pattern>/CheckDuplicateServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewVolunteer</servlet-name>
+        <servlet-class>servlets.NewVolunteer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewVolunteer</servlet-name>
+        <url-pattern>/NewVolunteer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CookieServlet</servlet-name>
+        <servlet-class>servlets.CookieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieServlet</servlet-name>
+        <url-pattern>/CookieServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginAdmin</servlet-name>
+        <servlet-class>servlets.LoginAdmin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginAdmin</servlet-name>
+        <url-pattern>/LoginAdmin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IncidentServlet</servlet-name>
+        <servlet-class>servlets.IncidentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IncidentServlet</servlet-name>
+        <url-pattern>/IncidentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MessageServlet</servlet-name>
+        <servlet-class>servlets.MessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/MessageServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>LoginVolunteerServlet</servlet-name>
+        <servlet-class>servlets.newOne.LoginVolunteerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginVolunteerServlet</servlet-name>
+        <url-pattern>/LoginVolunteerServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RunningIncidentsServlet</servlet-name>
+        <servlet-class>servlets.newOne.RunningIncidentsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RunningIncidentsServlet</servlet-name>
+        <url-pattern>/RunningIncidentsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ParticipantsServlet</servlet-name>
+        <servlet-class>servlets.newOne.ParticipantsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParticipantsServlet</servlet-name>
+        <url-pattern>/ParticipantsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CookieVolunteerServlet</servlet-name>
+        <servlet-class>servlets.newOne.CookieVolunteerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieVolunteerServlet</servlet-name>
+        <url-pattern>/CookieVolunteerServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckParticipantsServlet</servlet-name>
+        <servlet-class>servlets.newOne.CheckParticipantsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckParticipantsServlet</servlet-name>
+        <url-pattern>/CheckParticipantsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HistoryIncidentsServlet</servlet-name>
+        <servlet-class>servlets.newOne.HistoryIncidentsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HistoryIncidentsServlet</servlet-name>
+        <url-pattern>/HistoryIncidentsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminParticipantsServlet</servlet-name>
+        <servlet-class>servlets.AdminParticipantsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminParticipantsServlet</servlet-name>
+        <url-pattern>/AdminParticipantsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <servlet-class>servlets.StatisticsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <url-pattern>/StatisticsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RunningIncidentsUserServlet</servlet-name>
+        <servlet-class>servlets.RunningIncidentsUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RunningIncidentsUserServlet</servlet-name>
+        <url-pattern>/RunningIncidentsUserServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RunningIncidentsGuestServlet</servlet-name>
+        <servlet-class>servlets.RunningIncidentsGuestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RunningIncidentsGuestServlet</servlet-name>
+        <url-pattern>/RunningIncidentsGuestServlet</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
